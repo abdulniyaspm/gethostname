@@ -3,13 +3,13 @@ use std::io::Error;
 
 use libc;
 
-const HOSTNAME_BUFF_SIZE: usize = 1024;
+const HOSTNAME_BUFFER_SIZE: usize = 1024;
 
 fn main() {
-    let mut x: Vec<i8> = Vec::with_capacity(HOSTNAME_BUFF_SIZE);
+    let mut x: Vec<i8> = Vec::with_capacity(HOSTNAME_BUFFER_SIZE);
     let x_ptr = x.as_mut_ptr();
     unsafe {
-        let returncode = libc::gethostname(x_ptr, HOSTNAME_BUFF_SIZE);
+        let returncode = libc::gethostname(x_ptr, HOSTNAME_BUFFER_SIZE);
         if returncode == -1 {
             println!(
                 "gethostname function call failed with error: {:?}",
