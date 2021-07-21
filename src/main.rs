@@ -1,5 +1,6 @@
 use std::ffi::CStr;
 use std::io::Error;
+use std::process;
 
 use libc;
 
@@ -18,6 +19,7 @@ fn main() {
                 "gethostname system call failed with error: {:?}",
                 Error::last_os_error()
             );
+            process::exit(1);
         } else {
             let cstr = CStr::from_ptr(buffer_ptr);
             println!("{}", cstr.to_str().unwrap());
